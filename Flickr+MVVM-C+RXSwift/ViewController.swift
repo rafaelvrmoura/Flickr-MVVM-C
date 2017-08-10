@@ -8,11 +8,14 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UICollectionViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+         FlickrService.shared.getRecent(with: [.url_t], count: 10, page: 1) { (flickrRecords, error) in
+            
+            print(flickrRecords)
+        }
     }
 
     override func didReceiveMemoryWarning() {
