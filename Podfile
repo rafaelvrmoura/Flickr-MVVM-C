@@ -6,11 +6,16 @@ target 'Flickr+MVVM-C+RXSwift' do
   use_frameworks!
 
   # Pods for Flickr+MVVM-C+RXSwift
-  pod ‘AEXML’
+  pod 'AEXML'
+  pod 'RxSwift', '~> 3.0'
+  pod 'RxCocoa', '~> 3.0'
 
   target 'Flickr+MVVM-C+RXSwiftTests' do
     inherit! :search_paths
-    # Pods for testing
+    
+    pod 'RxBlocking', '~> 3.0'
+    pod 'RxTest', '~> 3.0'
+    
   end
 
 end

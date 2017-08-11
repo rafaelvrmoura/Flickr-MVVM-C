@@ -8,6 +8,8 @@
 
 import UIKit
 import AEXML
+import RxSwift
+import RxCocoa
 
 enum ExtraArgument: String {
     case description
@@ -39,13 +41,15 @@ enum ExtraArgument: String {
 
 class FlickrService: NSObject {
 
-    static let shared = FlickrService()
     private let baseURL: String
     private let secret: String?
     private let apiKey: String?
     
-    private override init() {
+    private var session: URLSession
+    
+    init(with session: URLSession = .shared) {
         baseURL = "https://api.flickr.com/services/rest/"
+        self.session = session
         
         // Searching for FlickrKeys.plist file to load the secret and api key.
         // If you don't have flickr keys go to https://www.flickr.com/services/apps/create/apply/? and request one
@@ -60,10 +64,10 @@ class FlickrService: NSObject {
         super.init()
     }
     
-    func getRecent(with extras: [ExtraArgument], count: Int, page: Int, completionHandler: @escaping ([FlickrRecord], Error?) -> ()) {
+    func getRecent(with extras: [ExtraArgument], count: Int, page: Int) -> Observable<[FlickrRecord]>? {
         
         guard var requestURL = URL(string: baseURL) else {
-            return
+            return nil
         }
         
         let params = ["method":"flickr.photos.getRecent",
@@ -76,37 +80,27 @@ class FlickrService: NSObject {
         var request = URLRequest(url: requestURL)
         request.httpMethod = "GET"
         
-        let session = URLSession(configuration: .default, delegate: nil, delegateQueue: OperationQueue.main)
-        
-        let task = session.dataTask(with: request) { (data, response, error) in
-            
-            guard let data = data, error == nil else { return }
+        return session.rx.data(request: request).flatMap({ (data) -> Observable<[FlickrRecord]> in
             
             let xml = try? AEXMLDocument(xml: data)
             let root = xml?.root
             
-            var flickerRecords: [FlickrRecord] = []
+            var flickrRecords: [FlickrRecord] = []
             
             if let photosElement = root?.children.first {
                 
                 for photoElement in photosElement.children {
-                    do {
-                        let record = try FlickrRecord(with: photoElement)
-                        flickerRecords.append(record)
-                    }catch {
-                        completionHandler([], error)
-                    }
+                    let record = try FlickrRecord(with: photoElement)
+                    flickrRecords.append(record)
                 }
             }
             
-            completionHandler(flickerRecords, nil)
-        }
-        
-        task.resume()
+            return Observable.just(flickrRecords)
+        })
     }
 }
 
-// MARK: - Array extension with ExtrarArguments elements
+// MARK: - Array with ExtrarArguments elements extension
 extension Array where Element == ExtraArgument {
     func string() -> String {
         let rawValues = self.map { return $0.rawValue}
