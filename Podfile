@@ -9,6 +9,7 @@ target 'Flickr+MVVM-C+RXSwift' do
   pod 'AEXML'
   pod 'RxSwift', '~> 3.0'
   pod 'RxCocoa', '~> 3.0'
+  pod 'Moya/RxSwift'
 
   target 'Flickr+MVVM-C+RXSwiftTests' do
     inherit! :search_paths

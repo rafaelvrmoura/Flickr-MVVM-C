@@ -1,5 +1,13 @@
 PODS:
   - AEXML (4.0.2)
+  - Alamofire (4.4.0)
+  - Moya/Core (8.0.3):
+    - Alamofire (~> 4.1)
+    - Result (~> 3.0)
+  - Moya/RxSwift (8.0.3):
+    - Moya/Core
+    - RxSwift (~> 3.0)
+  - Result (3.2.1)
   - RxBlocking (3.3.1):
     - RxSwift (~> 3.3)
   - RxCocoa (3.3.1):
@@ -10,6 +18,7 @@ PODS:
 
 DEPENDENCIES:
   - AEXML
+  - Moya/RxSwift
   - RxBlocking (~> 3.0)
   - RxCocoa (~> 3.0)
   - RxSwift (~> 3.0)
@@ -17,11 +26,14 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   AEXML: 7de81f28c6c876a210f31924acc2e326cd01e162
+  Alamofire: dc44b1600b800eb63da6a19039a0083d62a6a62d
+  Moya: d3721622e3cc0cc2f038d69a258686f0b66e7252
+  Result: 2453a22e5c5b11c0c3a478736e82cd02f763b781
   RxBlocking: c5918ecb86b8c205a8ccc6d1ff2abb338ddc50a0
   RxCocoa: 7dcb7a1860fc9cd0e23dae67ab105fc2916670b6
   RxSwift: 8fc9f2de6275a9101d518444e00bf32f1a42caac
   RxTest: f4e7360033fafa743f2f85097efa958402ed442a
 
-PODFILE CHECKSUM: c06279b5f90f37b25dd23a2e2ccdaed44aa828ef
+PODFILE CHECKSUM: 37c3ce6aeced22093e53d865ff158be2849630d4
 
 COCOAPODS: 1.2.0

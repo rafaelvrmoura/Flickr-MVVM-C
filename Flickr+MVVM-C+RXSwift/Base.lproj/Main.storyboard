@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="u5c-cD-thH" kind="relationship" relationship="rootViewController" id="d7x-em-RQX"/>
+                        <segue destination="3nO-R2-ymT" kind="relationship" relationship="rootViewController" id="KuL-rr-eef"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7dM-oV-Y9l" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -26,48 +26,63 @@
             <point key="canvasLocation" x="-1217" y="85"/>
         </scene>
         <!--Flickr-->
-        <scene sceneID="hJZ-u0-2u0">
+        <scene sceneID="er1-oo-gYI">
             <objects>
-                <collectionViewController id="u5c-cD-thH" customClass="GalleryViewController" customModule="Flickr_MVVM_C_RXSwift" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="SER-Mw-crf">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="3nO-R2-ymT" customClass="GalleryViewController" customModule="Flickr_MVVM_C_RXSwift" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="EXR-iB-KSF"/>
+                        <viewControllerLayoutGuide type="bottom" id="gWZ-4F-BFk"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="QUo-qO-wHw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="jkN-G0-GND">
-                            <size key="itemSize" width="180" height="180"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        </collectionViewFlowLayout>
-                        <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="photoCell" id="Xtz-WS-H3b" customClass="GalleryViewCell" customModule="Flickr_MVVM_C_RXSwift" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="180" height="180"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="180" height="180"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pp9-mR-iGK">
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="cMY-yp-u2R">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="iWX-GR-MWw">
+                                    <size key="itemSize" width="180" height="180"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="10" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="photoCell" id="3Z5-4G-uDj" customClass="GalleryViewCell" customModule="Flickr_MVVM_C_RXSwift" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="10" width="180" height="180"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="180" height="180"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        </imageView>
-                                    </subviews>
-                                </view>
-                                <connections>
-                                    <outlet property="photoView" destination="Pp9-mR-iGK" id="84R-Tb-Ka9"/>
-                                </connections>
-                            </collectionViewCell>
-                        </cells>
-                        <connections>
-                            <outlet property="dataSource" destination="u5c-cD-thH" id="MrO-H8-pF1"/>
-                            <outlet property="delegate" destination="u5c-cD-thH" id="x1I-gu-qcs"/>
-                        </connections>
-                    </collectionView>
-                    <navigationItem key="navigationItem" title="Flickr" id="Dsa-TB-FeW"/>
-                </collectionViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="g7P-8z-KSZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f8j-yK-p3Q">
+                                                    <rect key="frame" x="0.0" y="0.0" width="180" height="180"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                            </subviews>
+                                        </view>
+                                        <connections>
+                                            <outlet property="photoView" destination="f8j-yK-p3Q" id="PBc-hV-7wd"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="gWZ-4F-BFk" firstAttribute="top" secondItem="cMY-yp-u2R" secondAttribute="bottom" id="X0q-hd-mR6"/>
+                            <constraint firstAttribute="trailing" secondItem="cMY-yp-u2R" secondAttribute="trailing" id="kAm-QA-xN9"/>
+                            <constraint firstItem="cMY-yp-u2R" firstAttribute="top" secondItem="EXR-iB-KSF" secondAttribute="bottom" id="m6v-W6-EvX"/>
+                            <constraint firstItem="cMY-yp-u2R" firstAttribute="leading" secondItem="QUo-qO-wHw" secondAttribute="leading" id="qVm-iV-FSA"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Flickr" id="p1d-Gk-7cf"/>
+                    <connections>
+                        <outlet property="collectionView" destination="cMY-yp-u2R" id="P8V-r7-lZh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XB0-JT-NEp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-348" y="83.208395802098963"/>
+            <point key="canvasLocation" x="-380" y="83.208395802098963"/>
         </scene>
     </scenes>
 </document>
